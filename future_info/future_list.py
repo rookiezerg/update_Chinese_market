@@ -1,3 +1,9 @@
+import json
 import tushare as ts
 
-pro = ts.pro_api()
+with open('../config.json') as js:
+    api_key = json.load(js)['api_key']
+
+pro = ts.pro_api(api_key)
+
+
