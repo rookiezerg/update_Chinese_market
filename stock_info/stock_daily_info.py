@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import tushare as ts
 from threading import Thread, Semaphore
+from stock_list import stock_list
 
 path = '/Users/gate/data/'
 
@@ -11,12 +12,6 @@ with open('../config.json') as js:
 
 pro = ts.pro_api(api_key)
 ts.set_token(api_key)
-
-
-def stock_list():
-    df = pro.stock_basic(exchange='', list_status='L', fields='ts_code')
-    stock_list = df['ts_code'].tolist()
-    return stock_list
 
 
 def stock_list_date(ts_code):

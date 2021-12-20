@@ -6,6 +6,12 @@ with open('../config.json') as js:
 
 pro = ts.pro_api(api_key)
 
-df = pro.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
 
-print(df)
+def stock_list():
+    df = pro.stock_basic(exchange='', list_status='L', fields='ts_code')
+    ts_code_list = df['ts_code'].tolist()
+    return ts_code_list
+
+
+if __name__ == '__main__':
+    print(stock_list())
